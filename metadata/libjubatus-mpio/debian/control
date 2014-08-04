@@ -1,4 +1,4 @@
-Source: jubatus-mpio
+Source: libjubatus-mpio
 Priority: extra
 Maintainer: PFI & NTT <jubatus@googlegroups.com>
 Build-Depends: debhelper (>= 8.0.0), autotools-dev
@@ -8,13 +8,13 @@ Homepage: http://jubat.us/
 #Vcs-Git: git://git.debian.org/collab-maint/jubatus-mpio.git
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/jubatus-mpio.git;a=summary
 
-Package: jubatus-mpio-dev
+Package: libjubatus-mpio-dev
 Section: libdevel
 Architecture: any
-Depends: jubatus-mpio (= ${binary:Version})
+Depends: libjubatus-mpio (= ${binary:Version})
 Description: Multipurpose concurrent I/O framework for C++
 
-Package: jubatus-mpio
+Package: libjubatus-mpio
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}

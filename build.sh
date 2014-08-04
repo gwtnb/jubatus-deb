@@ -68,27 +68,27 @@ do_build() {
 
 	# mpio
 	tar zxf jubatus_mpio-${MPIO_VER}.tar.gz
-	mv jubatus_mpio-${MPIO_VER} jubatus-mpio-${MPIO_VER}
-	mv jubatus_mpio-${MPIO_VER}.tar.gz jubatus-mpio_${MPIO_VER}.orig.tar.gz
-	pushd jubatus-mpio-${MPIO_VER}
-	cp -r ${META_DIR}/jubatus-mpio/debian .
+	mv jubatus_mpio-${MPIO_VER} libjubatus-mpio-${MPIO_VER}
+	mv jubatus_mpio-${MPIO_VER}.tar.gz libjubatus-mpio_${MPIO_VER}.orig.tar.gz
+	pushd libjubatus-mpio-${MPIO_VER}
+	cp -r ${META_DIR}/libjubatus-mpio/debian .
 	dpkg-buildpackage
 	popd
 	echo "Installing jubatus-mpio"
-	sudo dpkg -i jubatus-mpio_${MPIO_VER}-1_amd64.deb
-        sudo dpkg -i jubatus-mpio-dev_${MPIO_VER}-1_amd64.deb
+	sudo dpkg -i libjubatus-mpio_${MPIO_VER}-1_amd64.deb
+        sudo dpkg -i libjubatus-mpio-dev_${MPIO_VER}-1_amd64.deb
 
 	# msgpack-rpc
 	tar zxf jubatus_msgpack-rpc-${MSGPACK_RPC_VER}.tar.gz
-	mv jubatus_msgpack-rpc-${MSGPACK_RPC_VER} jubatus-msgpack-rpc-${MSGPACK_RPC_VER}
-	mv jubatus_msgpack-rpc-${MSGPACK_RPC_VER}.tar.gz jubatus-msgpack-rpc_${MSGPACK_RPC_VER}.orig.tar.gz
-	pushd jubatus-msgpack-rpc-${MSGPACK_RPC_VER}
-	cp -r ${META_DIR}/jubatus-msgpack-rpc/debian .
+	mv jubatus_msgpack-rpc-${MSGPACK_RPC_VER} libjubatus-msgpack-rpc-${MSGPACK_RPC_VER}
+	mv jubatus_msgpack-rpc-${MSGPACK_RPC_VER}.tar.gz libjubatus-msgpack-rpc_${MSGPACK_RPC_VER}.orig.tar.gz
+	pushd libjubatus-msgpack-rpc-${MSGPACK_RPC_VER}
+	cp -r ${META_DIR}/libjubatus-msgpack-rpc/debian .
 	dpkg-buildpackage
 	popd
 	echo "Installing jubatus-msgpack-rpc"
-	sudo dpkg -i jubatus-msgpack-rpc_${MSGPACK_RPC_VER}-1_amd64.deb
-	sudo dpkg -i jubatus-msgpack-rpc-dev_${MSGPACK_RPC_VER}-1_amd64.deb
+	sudo dpkg -i libjubatus-msgpack-rpc_${MSGPACK_RPC_VER}-1_amd64.deb
+	sudo dpkg -i libjubatus-msgpack-rpc-dev_${MSGPACK_RPC_VER}-1_amd64.deb
 
 	# jubatus
 	tar zxf ${JUBATUS_VER}.tar.gz
@@ -110,28 +110,28 @@ clean() {
             echo 'jubatus is not installed'
         fi
 
-        if apt-cache show jubatus-msgpack-rpc; then
-            sudo apt-get remove -y jubatus-msgpack-rpc
+        if apt-cache show libjubatus-msgpack-rpc; then
+            sudo apt-get remove -y libjubatus-msgpack-rpc
         else
-            echo 'jubatus-mspgack-rpc is not installed'
+            echo 'libjubatus-mspgack-rpc is not installed'
         fi
 
-	if apt-cache show jubatus-msgpack-rpc-dev; then
-	    sudo apt-get remove -y jubatus-msgpack-rpc-dev
+	if apt-cache show libjubatus-msgpack-rpc-dev; then
+	    sudo apt-get remove -y libjubatus-msgpack-rpc-dev
 	else
-	    echo 'jubatus-msgpack-rpc-dev is not installed'
+	    echo 'libjubatus-msgpack-rpc-dev is not installed'
 	fi
 
-	if apt-cache show jubatus-mpio; then
-            sudo apt-get remove -y jubatus-mpio
+	if apt-cache show libjubatus-mpio; then
+            sudo apt-get remove -y libjubatus-mpio
         else
-            echo 'jubatus-mpio is not installed'
+            echo 'libjubatus-mpio is not installed'
         fi
 
-	if apt-cache show jubatus-mpio-dev; then
-	    sudo apt-get remove -y jubatus-mpio-dev
+	if apt-cache show libjubatus-mpio-dev; then
+	    sudo apt-get remove -y libjubatus-mpio-dev
 	else
-	    echo 'jubatus-mpio-dev is not installed'
+	    echo 'libjubatus-mpio-dev is not installed'
 	fi
 
         rm -rf source
